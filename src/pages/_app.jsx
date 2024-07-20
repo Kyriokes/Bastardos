@@ -6,9 +6,9 @@ import '../styles/globals.css'; // Our global stylesheet
 import 'bootstrap/dist/css/bootstrap.min.css'; // Bootstrap css
 import SEO from '../components/SEO';
 
-const PAGE_TITLE = 'SKVAD Community';
+const PAGE_TITLE = 'BASTARDOS';
 const PAGE_SUB_TITLE = 'DayZ';
-const PAGE_DESCRIPTION = 'DayZ Leaderboard for SKVAD Community. Browse the top players, and display your own detailed player statistics.';
+const PAGE_DESCRIPTION = 'Tabla de clasificación de DayZ para la comunidad de BASTARDOS. Navega por los mejores jugadores y muestra estadísticas detalladas de jugador.';
 const BRANDING_LOGO_FILE_NAME = 'logo.png';
 const BRANDING_THEME_COLOR = '#00FFFF';
 
