@@ -1,18 +1,20 @@
 import React from 'react';
 import Row from 'react-bootstrap/Row';
-import config from '../../config.json';
 import styles from '../styles/Footer.module.css';
+
+const BRANDING_NAME= 'BASTARDOS';
+const BRANDING_URL= 'https://discord.com/invite/qEmJcmmv6r';
 
 const Footer = () => {
   return (
     <footer className={styles.footer}>
       <Row>
         <a
-          href={config.BRANDING_URL}
+          href={BRANDING_URL}
           target="_blank"
           rel="noopener noreferrer"
         >
-          {new Date().getUTCFullYear()} &#169; {config.BRANDING_NAME}
+          {new Date().getUTCFullYear()} &#169; {BRANDING_NAME}
         </a>
       </Row>
       <Row>

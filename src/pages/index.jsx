@@ -21,25 +21,34 @@ import PlayerStatsCanvas from '../components/PlayerStatsCanvas';
 import LeaderboardAccordion from '../components/LeaderboardAccordion';
 
 // Import from local files
-import config from '../../config.json';
+
 import styles from '../styles/Home.module.css';
 import { titleCase } from '../helpers/util';
 import backendCftClient from '../helpers/cftClient';
 
 // Destructure from our user configuration file
-const {
-  BRANDING_BORDER_COLOR,
-  LEADERBOARD_DEFAULT_SORT_VALUE,
-  LEADERBOARD_ALLOWED_SORT_VALUES,
-  USE_MULTIPLE_SERVER_CONFIGURATION,
-  BRANDING_TEXT_LEADERBOARD_COLOR,
-  BRANDING_URL,
-  BRANDING_TEXT_BRAND_COLOR,
-  BRANDING_NAME,
-  CFTOOLS_DAYZ_SERVERS,
-  BLACKLISTED_CFTOOLS_IDS,
-  ALLOW_PLAYER_STATISTICS_FOR_BLACKLIST
-} = config;
+
+const BRANDING_BORDER_COLOR= '#000';
+const LEADERBOARD_DEFAULT_SORT_VALUE= 'kdratio';
+const LEADERBOARD_ALLOWED_SORT_VALUES= ['kills','deaths','kdratio','longest_kill','longest_shot','playtime','suicides'];
+const USE_MULTIPLE_SERVER_CONFIGURATION= true;
+const BRANDING_TEXT_LEADERBOARD_COLOR= '#FFF';
+const BRANDING_URL= 'https://discord.gg/8PngGFJG';
+const BRANDING_TEXT_BRAND_COLOR= '#d38300';
+const BRANDING_NAME= 'BASTARDOS';
+const CFTOOLS_DAYZ_SERVERS= [
+  {
+    'NAME': 'Server #1',
+    'SERVER_API_ID': 'Your secret server API ID O;'
+  },
+  {
+    'NAME': 'Server #2',
+    'SERVER_API_ID': 'Your secret server API ID O;'
+  }
+];
+const BLACKLISTED_CFTOOLS_IDS= [];
+const ALLOW_PLAYER_STATISTICS_FOR_BLACKLIST= false;
+
 
 /*
   Validate that we have all specified entries
@@ -59,7 +68,7 @@ for (const [k, v] of Object.entries({
   CFTOOLS_DAYZ_SERVERS,
   BLACKLISTED_CFTOOLS_IDS,
   ALLOW_PLAYER_STATISTICS_FOR_BLACKLIST
-})) if (typeof v === 'undefined') console.error(`Missing required property "${k}" in \`/config.json\` file`);
+})) if (typeof v === 'undefined') console.error(`Missing required property '${k}' in \`/config.json\` file`);
 
 // Create text backdrop style for main branding
 const BRANDING_BORDER = `1px 0px 4px ${BRANDING_BORDER_COLOR},
@@ -214,15 +223,15 @@ export default function Home ({ leaderboard, stats, grants }) {
             </MouseOverTooltip>
             {/* Text Input */}
             <Form.Control
-              type="text"
+              type='text'
               value={player}
-              placeholder="Enter your Steam64"
+              placeholder='Enter your Steam64'
               onChange={(e) => setPlayer(e.target.value)}
             />
             {/* Submit button */}
             <Button
               variant='success'
-              type="submit"
+              type='submit'
               style={{ marginLeft: '.3em' }}
             >Go</Button>
           </Form>
@@ -233,8 +242,8 @@ export default function Home ({ leaderboard, stats, grants }) {
             style={{ marginBottom: '.2rem' }}
           >
             <Dropdown.Toggle
-              variant="outline-light"
-              id="select-server-dropdown"
+              variant='outline-light'
+              id='select-server-dropdown'
               className={styles.dropdownToggle}
             >
               Server: {selectServer}
@@ -252,8 +261,8 @@ export default function Home ({ leaderboard, stats, grants }) {
           {/* Select sort by */}
           <Dropdown className={styles.dropdown} style={{ marginBottom: '2rem' }}>
             <Dropdown.Toggle
-              variant="outline-light"
-              id="select-sort-dropdown"
+              variant='outline-light'
+              id='select-sort-dropdown'
               className={styles.dropdownToggle}
             >
               Sort by: {titleCase(sortBy.replace(/[-_]/g, ' '))}

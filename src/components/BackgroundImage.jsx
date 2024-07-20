@@ -4,7 +4,6 @@ const OVERLAP_BACKGROUND_AND_NAVBAR = true;
 const USE_BACKGROUND_IMAGE = true;
 const BACKGROUND_IMAGE_FILE_NAME = 'background.png';
 
-
 function BackgroundImage () {
   return (
     <div style={{
