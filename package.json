@@ -1,0 +1,27 @@
+{
+  "name": "dayz-leaderboard-next",
+  "version": "1.0.4",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start -p 3002",
+    "lint": "next lint",
+    "analyze": "NODE_ENV=development ANALYZE=true npm run build"
+  },
+  "dependencies": {
+    "bootstrap": "^5.2.2",
+    "cftools-sdk": "^3.1.0",
+    "next": "^14.0.3",
+    "react": "18.2.0",
+    "react-bootstrap": "^2.5.0",
+    "react-dom": "^18.2.0",
+    "sharp": "^0.32.6"
+  },
+  "devDependencies": {
+    "@next/bundle-analyzer": "^13.0.4",
+    "eslint": "^8.26.0",
+    "eslint-config-next": "^13.1.4",
+    "eslint-plugin-react": "^7.31.10"
+  }
+}
