@@ -1,6 +1,7 @@
 import { Html, Head, Main, NextScript } from 'next/document';
 import React from 'react';
-import config from '../../config.json';
+
+const DEFAULT_BACKGROUND_COLOR = '#121212';
 
 function Document () {
   return (
@@ -12,7 +13,7 @@ function Document () {
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
         />
       </Head>
-      <body style={{ backgroundColor: config.DEFAULT_BACKGROUND_COLOR }}>
+      <body style={{ backgroundColor: DEFAULT_BACKGROUND_COLOR }}>
         <Main />
         <NextScript />
       </body>
