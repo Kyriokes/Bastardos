@@ -26,11 +26,18 @@ const Footer = () => {
           Just your own conscious, hopefully
         */}
         <a
+          href="https://github.com/Kyriokes"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Hecho por Kyriokes
+        </a>
+        <a
           href="https://mirasaki.dev/"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Made with ❤️ by Mirasaki
+          Basado en el modelo de Mirasaki
         </a>
       </Row>
     </footer>
