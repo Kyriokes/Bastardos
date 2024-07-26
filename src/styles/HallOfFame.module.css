@@ -1,0 +1,96 @@
+.container {
+  padding: 2rem;
+  background-color: #52000027;
+  color: white;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-content: center;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  
+}
+
+.buttonsGroup {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.sections {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  
+}
+
+.section {
+  border: 1px solid #0a000056;
+  border-radius: 5px;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #6363639f;
+  color: #000000;
+}
+
+.categoryTitle {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.playerCard {
+  cursor: pointer;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+  transition: background-color 0.3s;
+}
+
+.playerCard:hover {
+  background-color: #f0f0f0;
+}
+
+.playerOverview {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(224, 224, 224, 0.959);
+  border: 1px solid #ccc;
+  padding: 20px;
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: row-reverse;
+  border: rgba(0, 0, 0, 0.363);
+  border-style: solid;
+  border-radius: 10px;
+}
+
+.close {
+  color: rgb(0, 0, 0);
+  border: 0;
+  background: 0;
+  width: 2rem;
+  height: 2rem;
+  font-size: 4rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s, transform 0.3s;
+  scale: 1.8;
+}
+
+.close:hover {
+  border: 0;
+  background: 0;
+  transform: scale(1.2);
+}
+
+.close:focus {
+  outline: none;
+}

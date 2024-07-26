@@ -1,0 +1,40 @@
+.main {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  text-align: center;
+  margin: 0 auto 20px; /* Center the title and add bottom margin */
+  padding: 10px; /* Reduced padding */
+  background: rgba(0, 0, 0, 0.6); /* Semi-transparent black background */
+  border-radius: 8px;
+  color: #ffffff; /* Adjust color to fit your theme */
+  display: inline-block; /* Shrink background to fit the text */
+}
+
+.section {
+  margin-bottom: 20px;
+  padding: 15px;
+  background: rgba(0, 0, 0, 0.6); /* Semi-transparent black background */
+  border-radius: 8px;
+}
+
+.sectionTitle {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #ffffff; /* Adjust color to fit your theme */
+}
+
+.ruleList {
+  list-style-type: disc;
+  margin-left: 20px;
+  color: #ffffff; /* Adjust color to fit your theme */
+  list-style-type: decimal;
+}
+
+.ruleList ul {
+  list-style-type: lower-alpha;
+}
+

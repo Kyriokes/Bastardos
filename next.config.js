@@ -70,13 +70,13 @@ const nextConfig = {
   }
 };
 
-let withBundleAnalyzer;
-if (NODE_ENV !== 'production') {
-  withBundleAnalyzer = require('@next/bundle-analyzer')({
-    enabled: process.env.ANALYZE === 'true'
-  });
-}
+// let withBundleAnalyzer;
+// if (NODE_ENV !== 'production') {
+//   withBundleAnalyzer = require('@next/bundle-analyzer')({
+//     enabled: process.env.ANALYZE === 'true'
+//   });
+// }
 
-module.exports = NODE_ENV !== 'production'
-  ? withBundleAnalyzer(nextConfig)
-  : nextConfig;
+// module.exports = NODE_ENV !== 'production'
+//   ? withBundleAnalyzer(nextConfig)
+//   : nextConfig;

@@ -3,8 +3,8 @@ import Accordion from 'react-bootstrap/Accordion';
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import '../styles/Leaderboard.module.css';
-import styles from '../styles/Leaderboard.module.css';
+import '../styles/LeaderboardAccordion.module.css';
+import styles from '../styles/LeaderboardAccordion.module.css';
 import PlayerStatOverview from './PlayerStatOverview';
 
 const LeaderboardAccordion = ({ data }) => {
@@ -27,7 +27,7 @@ const LeaderboardAccordion = ({ data }) => {
             {nameRankId}
           </Accordion.Header>
           <Accordion.Body className={styles.accordionBody}>
-            <hr />
+            <hr/>
             <PlayerStatOverview stats={stats}/>
           </Accordion.Body>
         </Accordion.Item>;

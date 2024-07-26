@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import React, { useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
-
+import Link from "next/link";
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 
@@ -43,7 +43,7 @@ const NavBar = () => {
         }}
       >
         <Container className={styles.navContainer}>
-          <Navbar.Brand href="/">
+          <Navbar.Brand href="/" className={styles.brand}>
             <Image
               alt="logo"
               src={`/${BRANDING_LOGO_FILE_NAME}`}
@@ -53,6 +53,17 @@ const NavBar = () => {
             />{' '}
           </Navbar.Brand>
           <Navbar.Toggle />
+          <div className={styles.ButtonsGroup}>
+          <Link className={styles.leaderboardButton} href="/leaderboard" passHref>
+              Clasificaciones
+            </Link>
+            <Link className={styles.leaderboardButton} href="/hallOfFame" passHref>
+              Salón de la Fama
+            </Link>
+            <Link className={styles.leaderboardButton} href="/rules" passHref>
+              Reglas
+            </Link>
+          </div>
           <Navbar.Collapse className="justify-content-end">
             <Button
               className={styles.discordButton}

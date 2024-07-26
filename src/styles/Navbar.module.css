@@ -16,6 +16,7 @@
 
 .navContainer {
   margin: 0 auto;
+
 }
 
 .discordButton {
@@ -32,4 +33,40 @@
 .discordButton:focus {
   scale: 1.125;
   transition: all 500ms;
+}
+
+.brand:hover {
+  scale: 1.125;
+  transition: all 500ms;
+}
+
+.leaderboardButton {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 18px;
+  color: white;
+  background-color: #5a00008a;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.leaderboardButton:hover {
+  background-color: #005bb5;
+  transform: scale(1.05);
+}
+
+.leaderboardButton:focus {
+  outline: none;
+}
+
+.ButtonsGroup {
+  display: flex;
+  flex-wrap: wrap; 
+  gap: 20px; 
+  justify-content: center;
+  margin-bottom: 1rem;
 }

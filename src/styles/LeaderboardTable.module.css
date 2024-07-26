@@ -1,0 +1,57 @@
+.Body {
+  width: 100%;
+  
+}
+
+.Body th {
+  background-color: rgba(0, 0, 0, 0.800); /* Ensure the td background is transparent */
+  color: white;
+}
+
+
+.Body td {
+  background-color: rgba(0, 0, 0, 0.600); /* Ensure the td background is transparent */
+  color: white;
+}
+
+.PlayerOverviewCard {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(224, 224, 224, 0.959);
+  border: 1px solid #ccc;
+  padding: 20px;
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: row-reverse;
+  border:rgba(0, 0, 0, 0.363);
+  border-style: solid;
+  border-radius: 10px;
+}
+
+.close {
+  color: rgb(0, 0, 0);
+  border: 0;
+  background: 0;
+  width: 2rem;
+  height: 2rem;
+  font-size: 4rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s, transform 0.3s;
+  scale: 1.8;
+}
+
+.close:hover {
+  border: 0;
+  background: 0;
+  transform: scale(1.2);
+}
+
+.close:focus {
+  outline: none;
+}
