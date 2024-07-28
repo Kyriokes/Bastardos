@@ -33,6 +33,7 @@
 .discordButton:focus {
   scale: 1.125;
   transition: all 500ms;
+  background-color: #5865F2;
 }
 
 .brand:hover {
@@ -55,8 +56,10 @@
 }
 
 .leaderboardButton:hover {
-  background-color: #005bb5;
-  transform: scale(1.05);
+  background-color:#B1B1B1;
+  color: #5a0000;
+  transform: scale(1.1);
+  font-weight: bold;
 }
 
 .leaderboardButton:focus {

@@ -1,5 +1,5 @@
 import Container from "react-bootstrap/Container";
-import React, { useEffect, useState } from "react";
+
 
 import SEO from "../components/SEO";
 import Layout from "../components/Layout";
@@ -12,7 +12,9 @@ export default function Home() {
 			<SEO subTitle={"DayZ Leaderboard"} />
 			<Layout>
 				<Container>
-					<main className={styles.main}></main>
+					<main className={styles.main}>
+
+					</main>
 				</Container>
 			</Layout>
 		</>

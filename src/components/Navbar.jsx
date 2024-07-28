@@ -13,7 +13,7 @@ const SCROLL_INDICATOR_BACKGROUND_COLOR = 'grey';
 const BRANDING_LOGO_FILE_NAME = 'logo.png' ;
 const COMMUNITY_BUTTON_INVITE_LINK = 'https://discord.com/invite/qEmJcmmv6r';
 const COMMUNITY_BUTTON_USE_DISCORD_LOGO = true;
-const COMMUNITY_BUTTON_TEXT = 'Join our Discord!';
+const COMMUNITY_BUTTON_TEXT = 'Únete a Discord!';
 const SCROLL_INDICATOR_COLOR = '#FFF';
 
 

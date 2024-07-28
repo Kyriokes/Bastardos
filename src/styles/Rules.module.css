@@ -25,6 +25,13 @@
   font-size: 1.5rem;
   margin-bottom: 10px;
   color: #ffffff; /* Adjust color to fit your theme */
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.sectionButton {
+  width: 2rem;
 }
 
 .ruleList {
