@@ -1,25 +1,27 @@
-import puppeteer from 'puppeteer';
+import puppeteer from 'puppeteer-core';
+import chromium from 'chrome-aws-lambda';
 
 export default async function handler(req, res) {
   try {
     const browser = await puppeteer.launch({
+      args: chromium.args,
+      defaultViewport: chromium.defaultViewport,
+      executablePath: await chromium.executablePath,
       headless: true,
     });
 
     const page = await browser.newPage();
-    await page.goto('https://www.battlemetrics.com/servers/dayz/24163199');
+    await page.goto('https://www.battlemetrics.com/servers/dayz/24163199', {
+      waitUntil: 'networkidle2', // Ensures the page is fully loaded
+    });
 
-    // Increase the timeout to 60 seconds
-    await page.waitForSelector('.dl-horizontal');
+    await page.waitForSelector('.dl-horizontal', { timeout: 60000 }); // Increase timeout to 60 seconds
 
-    // Evaluate the page to get the data from <dd> elements
     const info = await page.evaluate(() => {
       const items = document.getElementsByTagName('dd');
-      // Convert HTMLCollection to an array and map the text content of each <dd> element
       return Array.from(items).map(item => item.textContent.trim());
     });
 
-    // console.log(info);
     await browser.close();
     
     res.status(200).json({ info });
