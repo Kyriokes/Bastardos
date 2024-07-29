@@ -19,7 +19,7 @@ import backendCftClient from "../helpers/cftClient";
 import LeaderboardTable from "../components/LeaderboardTable";
 
 const BRANDING_BORDER_COLOR = "#000";
-const LEADERBOARD_DEFAULT_SORT_VALUE = "kdratio";
+const LEADERBOARD_DEFAULT_SORT_VALUE = "kills";
 const LEADERBOARD_ALLOWED_SORT_VALUES = [
 	"kills",
 	"deaths",
@@ -268,25 +268,7 @@ export async function getServerSideProps({ query }) {
 			stats = null;
 	}
 
-		let hf = await backendCftClient.getLeaderboard({
-			order: "ASC",
-			statistic,
-			limit: 100,
-			serverApiId,
-		});
-		
-		const topKills = [...hf].sort((a, b) => b.kills - a.kills).slice(0, 3);
-		const topLongestKill = [...hf].sort((a, b) => b.longestKill - a.longestKill).slice(0, 1);
-		const topKDRatio = [...hf].sort((a, b) => b.killDeathRatio - a.killDeathRatio).slice(0, 1);
-		const filterByPlaytime = hf.filter(player => player.playtime > 216000); // 60 days in seconds
-		const topPlaytime = [...filterByPlaytime].sort((a, b) => b.playtime - a.playtime).slice(0, 1);
-	
-		const topPlayers = {
-			topKills,
-			topLongestKill,
-			topPlaytime,
-			topKDRatio,
-		};
+
 
 	return {
 		props: { leaderboard: res, stats: JSON.parse(JSON.stringify(stats)) },

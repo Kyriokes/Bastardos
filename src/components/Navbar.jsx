@@ -18,35 +18,35 @@ const SCROLL_INDICATOR_COLOR = '#FFF';
 
 
 const NavBar = () => {
-  const [scrapedData, setScrapedData] = useState([]);
-  console.log(scrapedData);
-  useEffect(() => {
-    // Check if scroll indicator is disabled
-    if (USE_SCROLL_INDICATOR) {
-      // When the user scrolls the page, execute myFunction
-      window.onscroll = () => {
-        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        const scrolled = (winScroll / height) * 100;
-        document.getElementById('scroll-tracker').style.width = scrolled + '%';
-      };
-    }
+  // const [scrapedData, setScrapedData] = useState([]);
+  // console.log(scrapedData);
+  // useEffect(() => {
+  //   // Check if scroll indicator is disabled
+  //   if (USE_SCROLL_INDICATOR) {
+  //     // When the user scrolls the page, execute myFunction
+  //     window.onscroll = () => {
+  //       const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+  //       const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  //       const scrolled = (winScroll / height) * 100;
+  //       document.getElementById('scroll-tracker').style.width = scrolled + '%';
+  //     };
+  //   }
 
-    const fetchData = async () => {
-      try {
-        const response = await fetch('/api/scrape');
-        const data = await response.json();
-        const answer = [data.info[1],data.info[3]]
-        setScrapedData(answer);
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await fetch('/api/scrape');
+  //       const data = await response.json();
+  //       const answer = [data.info[1],data.info[3]]
+  //       setScrapedData(answer);
         
-      } catch (error) {
-        console.error('Error fetching scraped data:', error);
-        setScrapedData(["",""])
-      }
-    };
+  //     } catch (error) {
+  //       console.error('Error fetching scraped data:', error);
+  //       setScrapedData(["",""])
+  //     }
+  //   };
 
-    fetchData();
-  }, []);
+  //   fetchData();
+  // }, []);
 
   return (
     <>
@@ -82,13 +82,13 @@ const NavBar = () => {
             </Link>
           </div>
           <Navbar.Collapse className="justify-content-end">
-            <div className={styles.ServerInfoGroup}>
+            {/* <div className={styles.ServerInfoGroup}>
               <p className={styles.ServerInfo}>Jugadores: {scrapedData[0]}</p>
               <div className={styles.ServerCont}>
               <p className={styles.ServerInfo}>Servidor: </p>
               <p className={styles[scrapedData[1]]}>{scrapedData[1]}</p>
               </div>
-            </div>
+            </div> */}
             <Button
               className={styles.discordButton}
               variant="outline-primary"
