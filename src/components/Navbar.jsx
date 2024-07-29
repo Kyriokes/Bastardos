@@ -1,10 +1,9 @@
 import Image from 'next/image';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Link from "next/link";
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
-
 import styles from '../styles/Navbar.module.css';
 
 const USE_SCROLL_INDICATOR = true;
@@ -17,7 +16,10 @@ const COMMUNITY_BUTTON_TEXT = 'Únete a Discord!';
 const SCROLL_INDICATOR_COLOR = '#FFF';
 
 
+
 const NavBar = () => {
+  const [scrapedData, setScrapedData] = useState([]);
+  console.log(scrapedData);
   useEffect(() => {
     // Check if scroll indicator is disabled
     if (USE_SCROLL_INDICATOR) {
@@ -29,7 +31,22 @@ const NavBar = () => {
         document.getElementById('scroll-tracker').style.width = scrolled + '%';
       };
     }
-  });
+
+    const fetchData = async () => {
+      try {
+        const response = await fetch('/api/scrape');
+        const data = await response.json();
+        const answer = [data.info[1],data.info[3]]
+        setScrapedData(answer);
+        
+      } catch (error) {
+        console.error('Error fetching scraped data:', error);
+        setScrapedData(["",""])
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <>
@@ -54,7 +71,7 @@ const NavBar = () => {
           </Navbar.Brand>
           <Navbar.Toggle />
           <div className={styles.ButtonsGroup}>
-          <Link className={styles.leaderboardButton} href="/leaderboard" passHref>
+            <Link className={styles.leaderboardButton} href="/leaderboard" passHref>
               Clasificaciones
             </Link>
             <Link className={styles.leaderboardButton} href="/hallOfFame" passHref>
@@ -65,6 +82,13 @@ const NavBar = () => {
             </Link>
           </div>
           <Navbar.Collapse className="justify-content-end">
+            <div className={styles.ServerInfoGroup}>
+              <p className={styles.ServerInfo}>Jugadores: {scrapedData[0]}</p>
+              <div className={styles.ServerCont}>
+              <p className={styles.ServerInfo}>Servidor: </p>
+              <p className={styles[scrapedData[1]]}>{scrapedData[1]}</p>
+              </div>
+            </div>
             <Button
               className={styles.discordButton}
               variant="outline-primary"

@@ -55,8 +55,53 @@
   transition: background-color 0.3s, transform 0.3s;
 }
 
+.ServerInfoGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+  margin-right: 1rem;
+}
+
+.ServerInfo {
+  font-size: 18px;
+  color: #AD0803;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.offline{
+  font-size: 18px;
+  color: #AD0803;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.online{
+  font-size: 18px;
+  color: #17ad03;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.ServerCont{
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .leaderboardButton:hover {
-  background-color:#B1B1B1;
+  background-color: #B1B1B1;
   color: #5a0000;
   transform: scale(1.1);
   font-weight: bold;
@@ -68,8 +113,8 @@
 
 .ButtonsGroup {
   display: flex;
-  flex-wrap: wrap; 
-  gap: 20px; 
+  flex-wrap: wrap;
+  gap: 20px;
   justify-content: center;
   margin-bottom: 1rem;
 }
