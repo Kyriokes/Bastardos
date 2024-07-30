@@ -1,4 +1,16 @@
+@keyframes slideInFromBottom {
+  0% {
+      transform: translateY(100%);
+      opacity: 0;
+  }
+  100% {
+      transform: translateY(0);
+      opacity: 1;
+  }
+}
+
 .main {
+  animation: slideInFromBottom 1s ease-out;
   min-height: calc(100vh - 85px);
   padding: 4rem 0;
   padding-bottom: 2em;
@@ -38,7 +50,7 @@
   color: #ffffff; /* Adjust color to fit your theme */
   display: flex;
   justify-content: space-between;
-  cursor: pointer;
+  
 }
 
 
