@@ -100,10 +100,11 @@ const NavBar = () => {
                 alt="discord-logo"
                 src='/discord-logo-white.svg'
                 width='30'
-                height='30'
-                style={{ marginRight: '.4em' }}
+                height='30'                
               />}
+              <div className={styles.discordButtonTxt}>
               {' '}{COMMUNITY_BUTTON_TEXT}
+              </div>
             </Button>
           </Navbar.Collapse>
         </Container>

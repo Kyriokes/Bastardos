@@ -18,7 +18,7 @@
   margin: 0 auto;
 }
 
-.discordButtonG{
+.discordButtonG {
   justify-content: end;
 }
 
@@ -30,6 +30,10 @@
   text-align: center;
   margin-right: .2em;
   padding: 0.5rem;
+}
+
+.discordButtonTxt {
+  margin-left: 0.4rem;
 }
 
 .discordButton:hover,
@@ -160,9 +164,11 @@
   .navContainer {
     margin: auto;
   }
-  .brand{
+
+  .brand {
     margin: 0;
   }
+
   .brand img {
     width: 50px;
     height: 50px;
@@ -181,8 +187,7 @@
   }
 
   .discordButton {
-    font-size: 0.6rem;
-    padding: 0.2rem;
+    margin-right: 0em;
   }
 
   .brand img {
@@ -190,8 +195,13 @@
     height: 35px;
     object-fit: contain;
   }
-  .discordButtonG{
-    justify-content:center;
+
+  .discordButtonG {
+    justify-content: center;
+    margin: 0;
   }
-  
+
+  .discordButtonTxt {
+    display: none;
+  }
 }
