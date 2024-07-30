@@ -5,8 +5,8 @@ import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import Container from 'react-bootstrap/Container';
 
-import LeaderboardAccordion from './LeaderboardAccordion';
 import WeaponTable from './tables/WeaponTable';
+import LeaderboardTable from './LeaderboardTable';
 
 // [DEV] - TODO: Global hit-zones and weapon hit-zones
 
@@ -78,7 +78,7 @@ const PlayerStatsCanvas = ({
               justifyContent: 'center',
               padding: '.5em 0 1em'
             }}>
-              <LeaderboardAccordion data={[statistics]}/>
+              <LeaderboardTable data={[statistics]}/>
             </div>
 
             {/* History of previous names */}

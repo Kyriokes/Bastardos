@@ -1,18 +1,12 @@
-import Link from "next/link";
 import { useRouter } from "next/router";
 import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
 import Dropdown from "react-bootstrap/Dropdown";
-import Container from "react-bootstrap/Container";
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { CFToolsId, ServerApiId, Statistic, SteamId64 } from "cftools-sdk";
 import SEO from "../components/SEO";
 import Layout from "../components/Layout";
-import MouseOverTooltip from "../components/MouseOverTooltip";
 import PlayerStatsCanvas from "../components/PlayerStatsCanvas";
-import LeaderboardAccordion from "../components/LeaderboardAccordion";
-
 import styles from "../styles/Leaderboard.module.css";
 import { titleCase } from "../helpers/util";
 import backendCftClient from "../helpers/cftClient";
@@ -39,10 +33,6 @@ const SORT_VALUES_TRANSLATIONS = {
 	suicides: "suicidios",
 };
 const BRANDING_TEXT_LEADERBOARD_COLOR = "#FFF";
-const BRANDING_URL = "https://discord.gg/8PngGFJG";
-const BRANDING_TEXT_BRAND_COLOR = "#d38300";
-const BRANDING_NAME = "BASTARDOS";
-
 const BLACKLISTED_CFTOOLS_IDS = [];
 const ALLOW_PLAYER_STATISTICS_FOR_BLACKLIST = false;
 
@@ -98,7 +88,7 @@ export default function Leaderboard({ leaderboard, stats }) {
 		<>
 			<SEO subTitle={"DayZ Leaderboard"} />
 			<Layout>
-				<Container>
+				<div className={styles.container}>
 					<main className={styles.main}>
 						<h1
 							className={styles.title}
@@ -107,9 +97,6 @@ export default function Leaderboard({ leaderboard, stats }) {
 								color: BRANDING_TEXT_LEADERBOARD_COLOR,
 							}}
 						>
-							{/* <Link href={BRANDING_URL || '/'} style={{ color: BRANDING_TEXT_BRAND_COLOR }}>
-                {BRANDING_NAME}
-              </Link> Leaderboard */}
 						</h1>
 						<Form
 							className={styles.form}
@@ -186,10 +173,11 @@ export default function Leaderboard({ leaderboard, stats }) {
 								}
 							/>
 						)}
-						{/* <LeaderboardAccordion data={leaderboard} /> */}
-						<LeaderboardTable data={leaderboard}/>
+            <div className={styles.tableContainer}>
+              <LeaderboardTable data={leaderboard} className={styles.table} />
+            </div>
 					</main>
-				</Container>
+				</div>
 			</Layout>
 		</>
 	);

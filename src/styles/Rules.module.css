@@ -45,3 +45,8 @@
   list-style-type: lower-alpha;
 }
 
+@media (max-width: 1000px) {}
+
+@media (max-width: 770px) {}
+
+@media (max-width: 500px) {}

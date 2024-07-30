@@ -1,4 +1,3 @@
-import { useRef, useEffect } from "react";
 import Container from "react-bootstrap/Container";
 import SEO from "../components/SEO";
 import Layout from "../components/Layout";

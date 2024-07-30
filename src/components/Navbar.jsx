@@ -81,7 +81,7 @@ const NavBar = () => {
               Reglas
             </Link>
           </div>
-          <Navbar.Collapse className="justify-content-end">
+          <Navbar.Collapse className={styles.discordButtonG}>
             {/* <div className={styles.ServerInfoGroup}>
               <p className={styles.ServerInfo}>Jugadores: {scrapedData[0]}</p>
               <div className={styles.ServerCont}>

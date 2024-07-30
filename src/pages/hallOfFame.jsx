@@ -1,4 +1,3 @@
-import Link from "next/link";
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { CFToolsId, ServerApiId, Statistic, SteamId64 } from "cftools-sdk";
@@ -70,11 +69,12 @@ export default function HallOfFame({ topPlayers }) {
 			<Layout>
 				<div className={styles.container}>
 					<div className={styles.section}>
-						<h2 className={styles.categoryTitle}>Top K/D Ratio</h2>
-						<div
-							className={styles.playerCard}
-							onClick={() => handleOpenPlayerOverview(topKDR)}
-						>
+						<h2>
+							Relación asesinatos
+							<br />
+							/muertes
+						</h2>
+						<div onClick={() => handleOpenPlayerOverview(topKDR)}>
 							<img
 								src={kdr}
 								alt="Descripción de la imagen"
@@ -85,76 +85,55 @@ export default function HallOfFame({ topPlayers }) {
 							{renderPlayerStats(topKDR, "topKDRatio")}
 						</div>
 					</div>
-					{/* Podium for top 3 players in kills */}
-					<div className={styles.podium}>
+					<div className={styles.section}>
+						<h2>Asesinatos</h2>
 						<img
 							src={topT}
 							alt="Descripción de la imagen"
 							width="300"
 							height="200"
 						/>
-						<div
-							className={`${styles.player} ${styles.second}`}
-							onClick={() => handleOpenPlayerOverview(top2)}
-						>
-							<div className={styles.name}>{top2.name}</div>
-							{renderPlayerStats(top2, "topKills")}
-						</div>
-						<div
-							className={`${styles.player} ${styles.first}`}
-							onClick={() => handleOpenPlayerOverview(top1)}
-						>
-							<div className={styles.name}>{top1.name}</div>
+						<div onClick={() => handleOpenPlayerOverview(top1)}>
+							<h2>{top1.name}</h2>
 							{renderPlayerStats(top1, "topKills")}
 						</div>
-						<div
-							className={`${styles.player} ${styles.third}`}
-							onClick={() => handleOpenPlayerOverview(top3)}
-						>
-							<div className={styles.name}>{top3.name}</div>
+						<div onClick={() => handleOpenPlayerOverview(top2)}>
+							<h2>{top2.name}</h2>
+							{renderPlayerStats(top2, "topKills")}
+						</div>
+						<div onClick={() => handleOpenPlayerOverview(top3)}>
+							<h2>{top3.name}</h2>
 							{renderPlayerStats(top3, "topKills")}
 						</div>
 					</div>
-					<div className={styles.sections}>
-						<div className={styles.section}>
-							<h2 className={styles.categoryTitle}>
-								Top Playtime
-							</h2>
-							<div
-								className={styles.playerCard}
-								onClick={() =>
-									handleOpenPlayerOverview(maxPlayTime)
-								}
-							>
-								<img
-									src={nolife}
-									alt="Descripción de la imagen"
-									width="300"
-									height="200"
-								/>
-								<h3>{maxPlayTime.name}</h3>
-								{renderPlayerStats(maxPlayTime, "topPlaytime")}
-							</div>
+					<div className={styles.section}>
+						<h2>Tiempo de juego</h2>
+						<div
+							onClick={() =>
+								handleOpenPlayerOverview(maxPlayTime)
+							}
+						>
+							<img
+								src={nolife}
+								alt="Descripción de la imagen"
+								width="300"
+								height="200"
+							/>
+							<h3>{maxPlayTime.name}</h3>
+							{renderPlayerStats(maxPlayTime, "topPlaytime")}
 						</div>
-						<div className={styles.section}>
-							<h2 className={styles.categoryTitle}>
-								Longest Kill
-							</h2>
-							<div
-								className={styles.playerCard}
-								onClick={() =>
-									handleOpenPlayerOverview(longestK)
-								}
-							>
-								<img
-									src={sniper}
-									alt="Descripción de la imagen"
-									width="300"
-									height="200"
-								/>
-								<h3>{longestK.name}</h3>
-								{renderPlayerStats(longestK, "topLongestKill")}
-							</div>
+					</div>
+					<div className={styles.section}>
+						<h2>Asesinato más distante</h2>
+						<div onClick={() => handleOpenPlayerOverview(longestK)}>
+							<img
+								src={sniper}
+								alt="Descripción de la imagen"
+								width="300"
+								height="200"
+							/>
+							<h3>{longestK.name}</h3>
+							{renderPlayerStats(longestK, "topLongestKill")}
 						</div>
 					</div>
 					{selectedPlayer && (

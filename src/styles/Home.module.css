@@ -48,3 +48,9 @@
   color: #ffffff; /* Adjust color to fit your theme */
   list-style-type: decimal;
 }
+
+@media (max-width: 1000px) {}
+
+@media (max-width: 770px) {}
+
+@media (max-width: 500px) {}

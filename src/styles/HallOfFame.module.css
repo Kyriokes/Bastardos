@@ -1,78 +1,20 @@
 .container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem; 
+}
+.section {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 3rem;
+  border: 1rem;
+  border-radius: 10px;
+  margin: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.podium {
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  width: 35rem;
-  height: 15rem;
-  margin-bottom: 1rem;
-}
-
-.podium .player {
-  width: 150rem;
+  color: white;
   text-align: center;
-  margin: 0 10px;
-  background-color: #ffcc00;
-  border: 2px solid #333;
-  border-radius: 5px 5px 0 0;
-  
-  color: #fff;
-  font-weight: bold;
-  
-}
-
-.podium .name {
-  background-color: #333;
-  padding: 5px;
-  border-radius: 0 0 5px 5px ;
-  
-}
-
-.podium .first {
-  height: 10rem;
-  
-  background-color: gold;
-}
-
-.podium .second {
-  height: 7rem;
-  
-  background-color: silver;
-}
-
-.podium .third {
-  height: 5rem;
-  
-  background-color: #cd7f32;
-}
-
-.sections {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-}
-
-.section {
-  margin: 20px;
-}
-
-.categoryTitle {
-  font-size: 24px;
-  margin-bottom: 10px;
-}
-
-.playerCard {
-  cursor: pointer;
-  background-color: #f8f9fa;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  padding: 10px;
-  margin: 10px;
+  height: auto;
 }
 
 .playerOverview {
@@ -94,4 +36,32 @@
   position: absolute;
   top: 10px;
   right: 10px;
+}
+
+.close:hover {
+  border: 0;
+  background: 0;
+  transform: scale(1.2);
+}
+
+.close:focus {
+  outline: none;
+}
+
+
+@media (max-width: 1000px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 770px) {}
+
+@media (max-width: 500px) {
+  .section {
+    margin: 1rem;
+    padding: 1rem;
+  }
 }
