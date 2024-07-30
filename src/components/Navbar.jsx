@@ -100,7 +100,8 @@ const NavBar = () => {
                 alt="discord-logo"
                 src='/discord-logo-white.svg'
                 width='30'
-                height='30'                
+                height='30'
+                className={styles.discordImg}                
               />}
               <div className={styles.discordButtonTxt}>
               {' '}{COMMUNITY_BUTTON_TEXT}
