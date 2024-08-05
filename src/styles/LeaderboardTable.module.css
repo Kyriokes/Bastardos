@@ -55,3 +55,40 @@
 .close:focus {
   outline: none;
 }
+
+@media (max-width: 1130px) {
+  .Body th:nth-child(1) {
+    content: 'N°';
+  }
+  .Body th:nth-child(2) {
+    content: 'N';
+  }
+  .Body th:nth-child(3) {
+    content: 'A';
+  }
+  .Body th:nth-child(4) {
+    content: 'M';
+  }
+  .Body th:nth-child(5) {
+    content: 'A/M';
+  }
+  .Body th:nth-child(6), 
+  .Body td:nth-child(6) {
+    display: none;
+  }
+  .Body th:nth-child(7) {
+    content: 'T';
+  }
+  .Body th:nth-child(8), 
+  .Body td:nth-child(8) {
+    display: none;
+  }
+}
+
+@media (max-width: 770px) {
+
+}
+
+@media (max-width: 500px) {
+
+}
