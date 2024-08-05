@@ -6,14 +6,13 @@ import "../styles/LeaderboardTable.module.css";
 import styles from "../styles/LeaderboardTable.module.css";
 
 const LeaderboardTable = ({ data }) => {
+  const [isSmallScreen, setIsSmallScreen] = useState(() => typeof window !== "undefined" && window.innerWidth <= 1000);
   const [selectedPlayer, setSelectedPlayer] = useState(null);
-  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 1000);
-
-  const handleResize = () => {
-    setIsSmallScreen(window.innerWidth <= 1000);
-  };
 
   useEffect(() => {
+    const handleResize = () => {
+      setIsSmallScreen(window.innerWidth <= 1000);
+    };
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
@@ -32,7 +31,7 @@ const LeaderboardTable = ({ data }) => {
         <thead>
           <tr>
             <th>{isSmallScreen ? "N°" : "Rango"}</th>
-            <th>{isSmallScreen ? "N" : "Nombre"}</th>
+            <th>{isSmallScreen ? "Nombre" : "Nombre"}</th>
             <th>{isSmallScreen ? "A" : "Asesinatos"}</th>
             <th>{isSmallScreen ? "M" : "Muertes"}</th>
             <th>{isSmallScreen ? "A/M" : "Asesinatos/muertes"}</th>
