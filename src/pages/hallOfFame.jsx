@@ -6,24 +6,14 @@ import Layout from "../components/Layout";
 import PlayerStatOverview from "../components/PlayerStatOverview";
 import styles from "../styles/HallOfFame.module.css";
 import backendCftClient from "../helpers/cftClient";
+import banlist from "../helpers/Banlist";
 
 const kdr = "kdr.jpg";
 const nolife = "nolife.webp";
 const sniper = "sniper.webp";
 const topT = "top3.webp";
 
-const LEADERBOARD_ALLOWED_SORT_VALUES = [
-	"kills",
-	"deaths",
-	"kdratio",
-	"longest_kill",
-	"longest_shot",
-	"playtime",
-	"suicides",
-];
-
-const BLACKLISTED_CFTOOLS_IDS = [];
-const ALLOW_PLAYER_STATISTICS_FOR_BLACKLIST = false;
+const BLACKLISTED_CFTOOLS_IDS = banlist;
 
 export default function HallOfFame({ topPlayers }) {
 	const [selectedPlayer, setSelectedPlayer] = useState(null);
@@ -70,9 +60,9 @@ export default function HallOfFame({ topPlayers }) {
 				<div className={styles.container}>
 					<div className={styles.section}>
 						<h2>
-							Relación asesinatos
+							Mas asesinatos
 							<br />
-							/muertes
+							por muerte
 						</h2>
 						<div onClick={() => handleOpenPlayerOverview(topKDR)}>
 							<img
@@ -86,7 +76,11 @@ export default function HallOfFame({ topPlayers }) {
 						</div>
 					</div>
 					<div className={styles.section}>
-						<h2>Asesinatos</h2>
+						<h2>
+							Asesinos
+							<br />
+							sedientos de pvp
+						</h2>
 						<img
 							src={topT}
 							alt="Descripción de la imagen"
@@ -94,20 +88,52 @@ export default function HallOfFame({ topPlayers }) {
 							height="200"
 						/>
 						<div onClick={() => handleOpenPlayerOverview(top1)}>
-							<h2>{top1.name}</h2>
-							{renderPlayerStats(top1, "topKills")}
+							<div></div>
+							<div>
+								{" "}
+								<h2>{top1.name}</h2>
+								{renderPlayerStats(top1, "topKills")}
+							</div>
 						</div>
 						<div onClick={() => handleOpenPlayerOverview(top2)}>
-							<h2>{top2.name}</h2>
-							{renderPlayerStats(top2, "topKills")}
+							<div></div>
+							<div>
+								{" "}
+								<h2>{top2.name}</h2>
+								{renderPlayerStats(top2, "topKills")}
+							</div>
 						</div>
 						<div onClick={() => handleOpenPlayerOverview(top3)}>
-							<h2>{top3.name}</h2>
-							{renderPlayerStats(top3, "topKills")}
+							<div></div>
+							<div>
+								{" "}
+								<h2>{top3.name}</h2>
+								{renderPlayerStats(top3, "topKills")}
+							</div>
 						</div>
 					</div>
 					<div className={styles.section}>
-						<h2>Tiempo de juego</h2>
+						<h2>
+							Asesinato más
+							<br /> distante
+						</h2>
+						<div onClick={() => handleOpenPlayerOverview(longestK)}>
+							<img
+								src={sniper}
+								alt="Descripción de la imagen"
+								width="300"
+								height="200"
+							/>
+							<h3>{longestK.name}</h3>
+							{renderPlayerStats(longestK, "topLongestKill")}
+						</div>
+					</div>
+					<div className={styles.section}>
+						<h2>
+							Tiempo de juego
+							<br />
+							El sin vida
+						</h2>
 						<div
 							onClick={() =>
 								handleOpenPlayerOverview(maxPlayTime)
@@ -121,19 +147,6 @@ export default function HallOfFame({ topPlayers }) {
 							/>
 							<h3>{maxPlayTime.name}</h3>
 							{renderPlayerStats(maxPlayTime, "topPlaytime")}
-						</div>
-					</div>
-					<div className={styles.section}>
-						<h2>Asesinato más distante</h2>
-						<div onClick={() => handleOpenPlayerOverview(longestK)}>
-							<img
-								src={sniper}
-								alt="Descripción de la imagen"
-								width="300"
-								height="200"
-							/>
-							<h3>{longestK.name}</h3>
-							{renderPlayerStats(longestK, "topLongestKill")}
 						</div>
 					</div>
 					{selectedPlayer && (
@@ -212,6 +225,31 @@ export async function getServerSideProps({ query }) {
 			serverApiId,
 		});
 
+		if (
+			BLACKLISTED_CFTOOLS_IDS &&
+			Array.isArray(BLACKLISTED_CFTOOLS_IDS) &&
+			BLACKLISTED_CFTOOLS_IDS[0]
+		) {
+			const filteredRes = res.filter(
+				({ id }) => !BLACKLISTED_CFTOOLS_IDS.includes(id)
+			);
+
+			if (res.length !== filteredRes.length) {
+				res = filteredRes.map((stats, index) => ({
+					...stats,
+					rank: index + 1,
+				}));
+			}
+			if (
+				playerStats &&
+				ALLOW_PLAYER_STATISTICS_FOR_BLACKLIST === false &&
+				(BLACKLISTED_CFTOOLS_IDS.includes(query.player) ||
+					BLACKLISTED_CFTOOLS_IDS.includes(playerStats.id))
+			) {
+				playerStats = null;
+			}
+		}
+
 		return res.map((stats) => {
 			if (stats.id.id) stats.id = stats.id.id;
 			for (const key in stats) {
@@ -228,17 +266,19 @@ export async function getServerSideProps({ query }) {
 	// const kdRatioLeaderboard = await getLeaderboard(statistic.KILL_DEATH_RATIO);
 
 	// Clasificación de jugadores según diferentes estadísticas
-	const topKills = [...killsLeaderboard].sort((a, b) => b.kills - a.kills);
-	const topLongestKill = [...longestKillLeaderboard].sort(
-		(a, b) => b.longestKill - a.longestKill
-	);
-	const topPlaytime = playtimeLeaderboard.sort(
-		(a, b) => b.playtime - a.playtime
-	);
+	const topKills = [...killsLeaderboard]
+		.sort((a, b) => b.kills - a.kills)
+		.slice(0, 3);
+	const topLongestKill = [...longestKillLeaderboard]
+		.sort((a, b) => b.longestKill - a.longestKill)
+		.slice(0, 1);
+	const topPlaytime = playtimeLeaderboard
+		.sort((a, b) => b.playtime - a.playtime)
+		.slice(0, 1);
 	// const topKDRatio = [...kdRatioLeaderboard].sort((a, b) => b.killDeathRatio - a.killDeathRatio);
-	const topKDRatio = [...topPlaytime].sort(
-		(a, b) => b.killDeathRatio - a.killDeathRatio
-	);
+	const topKDRatio = [...topPlaytime]
+		.sort((a, b) => b.killDeathRatio - a.killDeathRatio)
+		.slice(0, 1);
 
 	const topPlayers = {
 		topKills,

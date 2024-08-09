@@ -11,6 +11,7 @@ import styles from "../styles/Leaderboard.module.css";
 import { titleCase } from "../helpers/util";
 import backendCftClient from "../helpers/cftClient";
 import LeaderboardTable from "../components/LeaderboardTable";
+import banlist from "../helpers/Banlist";
 
 const BRANDING_BORDER_COLOR = "#000";
 const LEADERBOARD_DEFAULT_SORT_VALUE = "kills";
@@ -33,7 +34,7 @@ const SORT_VALUES_TRANSLATIONS = {
 	suicides: "suicidios",
 };
 const BRANDING_TEXT_LEADERBOARD_COLOR = "#FFF";
-const BLACKLISTED_CFTOOLS_IDS = [];
+const BLACKLISTED_CFTOOLS_IDS = banlist;
 const ALLOW_PLAYER_STATISTICS_FOR_BLACKLIST = false;
 
 const BRANDING_BORDER = `1px 0px 4px ${BRANDING_BORDER_COLOR},
@@ -218,6 +219,10 @@ export async function getServerSideProps({ query }) {
 		}
 	}
 
+	// const player = { id: '76561198279705129' }
+	// let crisx = await backendCftClient.getPlayerDetails(player)
+	// console.log(crisx);
+	
 	let res = await backendCftClient.getLeaderboard({
 		order: "ASC",
 		statistic,
@@ -255,8 +260,6 @@ export async function getServerSideProps({ query }) {
 		)
 			stats = null;
 	}
-
-
 
 	return {
 		props: { leaderboard: res, stats: JSON.parse(JSON.stringify(stats)) },

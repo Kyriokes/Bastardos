@@ -11,24 +11,28 @@
 
 
 .container {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem; 
+  display: flex;
+  flex-wrap: wrap;
   animation: slideInFromBottom 1s ease-out;
+  justify-content:space-around ;
 }
 .section {
   background-color: rgba(0, 0, 0, 0.5);
   padding: 3rem;
-  border: 1rem;
-  border-radius: 10px;
+  border: 0.3rem;
+  border-radius: 1rem;
+  border-style: solid;
+  border-color: #808080;
   margin: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   color: white;
   text-align: center;
-  height: auto;
+  height: fit-content;
+  width: fit-content;
 }
+
 
 .playerOverview {
   position: fixed;
