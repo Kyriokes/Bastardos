@@ -6,12 +6,14 @@
 .Body th {
   background-color: rgba(0, 0, 0, 0.800); /* Ensure the td background is transparent */
   color: white;
+  text-align: center;
 }
 
 
 .Body td {
   background-color: rgba(0, 0, 0, 0.600); /* Ensure the td background is transparent */
   color: white;
+  text-align: center;
 }
 
 .PlayerOverviewCard {
