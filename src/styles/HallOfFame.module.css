@@ -19,10 +19,8 @@
 .section {
   background-color: rgba(0, 0, 0, 0.5);
   padding: 3rem;
-  border: 0.3rem;
+  border: 0.3rem solid #808080;
   border-radius: 1rem;
-  border-style: solid;
-  border-color: #808080;
   margin: 2rem;
   display: flex;
   flex-direction: column;
@@ -31,8 +29,30 @@
   text-align: center;
   height: fit-content;
   width: fit-content;
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
 }
 
+.player:hover{
+  cursor: pointer;
+  color: #B1B1B1;
+}
+
+.imgs {
+  position: relative;
+  z-index: 2;
+  border-radius: 10%;
+}
+
+.imgs::after {
+  content: '';
+  position: absolute;
+  inset: 0; 
+  background: inherit;
+  filter: blur(40px) saturate(400%);
+  z-index: -1; 
+}
 
 .playerOverview {
   position: fixed;

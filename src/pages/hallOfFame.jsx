@@ -65,13 +65,13 @@ export default function HallOfFame({ topPlayers }) {
 							por muerte
 						</h2>
 						<div onClick={() => handleOpenPlayerOverview(topKDR)}>
-							<img
+							<img className={styles.imgs}
 								src={kdr}
 								alt="Descripción de la imagen"
 								width="300"
 								height="200"
 							/>
-							<h3>{topKDR.name}</h3>
+							<h3 className={styles.player}>{topKDR.name}</h3>
 							{renderPlayerStats(topKDR, "topKDRatio")}
 						</div>
 					</div>
@@ -81,7 +81,7 @@ export default function HallOfFame({ topPlayers }) {
 							<br />
 							sedientos de pvp
 						</h2>
-						<img
+						<img className={styles.imgs}
 							src={topT}
 							alt="Descripción de la imagen"
 							width="300"
@@ -91,7 +91,7 @@ export default function HallOfFame({ topPlayers }) {
 							<div></div>
 							<div>
 								{" "}
-								<h2>{top1.name}</h2>
+								<h2 className={styles.player}>{top1.name}</h2>
 								{renderPlayerStats(top1, "topKills")}
 							</div>
 						</div>
@@ -99,7 +99,7 @@ export default function HallOfFame({ topPlayers }) {
 							<div></div>
 							<div>
 								{" "}
-								<h2>{top2.name}</h2>
+								<h2 className={styles.player}>{top2.name}</h2>
 								{renderPlayerStats(top2, "topKills")}
 							</div>
 						</div>
@@ -107,7 +107,7 @@ export default function HallOfFame({ topPlayers }) {
 							<div></div>
 							<div>
 								{" "}
-								<h2>{top3.name}</h2>
+								<h2 className={styles.player}>{top3.name}</h2>
 								{renderPlayerStats(top3, "topKills")}
 							</div>
 						</div>
@@ -118,13 +118,13 @@ export default function HallOfFame({ topPlayers }) {
 							<br /> distante
 						</h2>
 						<div onClick={() => handleOpenPlayerOverview(longestK)}>
-							<img
+							<img className={styles.imgs}
 								src={sniper}
 								alt="Descripción de la imagen"
 								width="300"
 								height="200"
 							/>
-							<h3>{longestK.name}</h3>
+							<h3 className={styles.player}>{longestK.name}</h3>
 							{renderPlayerStats(longestK, "topLongestKill")}
 						</div>
 					</div>
@@ -139,13 +139,13 @@ export default function HallOfFame({ topPlayers }) {
 								handleOpenPlayerOverview(maxPlayTime)
 							}
 						>
-							<img
+							<img className={styles.imgs}
 								src={nolife}
 								alt="Descripción de la imagen"
 								width="300"
 								height="200"
 							/>
-							<h3>{maxPlayTime.name}</h3>
+							<h3 className={styles.player}>{maxPlayTime.name}</h3>
 							{renderPlayerStats(maxPlayTime, "topPlaytime")}
 						</div>
 					</div>
@@ -263,7 +263,7 @@ export async function getServerSideProps({ query }) {
 	const killsLeaderboard = await getLeaderboard(statistic.KILLS);
 	const longestKillLeaderboard = await getLeaderboard(statistic.LONGEST_KILL);
 	const playtimeLeaderboard = await getLeaderboard(statistic.PLAYTIME);
-	// const kdRatioLeaderboard = await getLeaderboard(statistic.KILL_DEATH_RATIO);
+	const kdRatioLeaderboard = await getLeaderboard(statistic.KILL_DEATH_RATIO);
 
 	// Clasificación de jugadores según diferentes estadísticas
 	const topKills = [...killsLeaderboard]
@@ -275,10 +275,10 @@ export async function getServerSideProps({ query }) {
 	const topPlaytime = playtimeLeaderboard
 		.sort((a, b) => b.playtime - a.playtime)
 		.slice(0, 1);
-	// const topKDRatio = [...kdRatioLeaderboard].sort((a, b) => b.killDeathRatio - a.killDeathRatio);
-	const topKDRatio = [...topPlaytime]
-		.sort((a, b) => b.killDeathRatio - a.killDeathRatio)
-		.slice(0, 1);
+	const topKDRatio = [...kdRatioLeaderboard].sort((a, b) => b.killDeathRatio - a.killDeathRatio);
+	// const topKDRatio = [...topPlaytime]
+	// 	.sort((a, b) => b.killDeathRatio - a.killDeathRatio)
+	// 	.slice(0, 1);
 
 	const topPlayers = {
 		topKills,
