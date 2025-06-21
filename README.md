@@ -1,4 +1,4 @@
-<h1 align="center">Welcome to dayz-leaderboard-next 👋</h1>
+<h1 align="center">Welcome to DayZ Bastardos Leaderboard 👋</h1>
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
   <a href="https://mit-license.org/" target="_blank">
@@ -6,28 +6,30 @@
   </a>
 </p>
 
-**__‼️ This project has been archived! Check out [the replacement](https://github.com/Mirasaki-Development/dayz-community-template) instead ‼️__**
+## 📋 About This Project
 
-This is a DayZ leaderboard website created with [NextJS](https://nextjs.org) using data collected and provided by the [CFTools Data API](https://app.cftools.cloud/). Originally funded by TwoPigs from [The Traveller](https://discord.gg/thetraveller) who's always looking to give to the community, here it is, open-source and ready for you to host.
+This is an **adapted version** of the original [dayz-leaderboard-next](https://github.com/Mirasaki/dayz-leaderboard-nextjs) project, specifically customized for the **DayZ Bastardos Server**. 
 
-> 😎 Have any questions or just want to chill/have a chat? Come join our [support server](https://discord.gg/jKja5FBnYf)
+**Original Copyright:** This project is based on the work of [Richard Hillebrand (Mirasaki)](https://github.com/Mirasaki) and maintains the original MIT license.
 
-> 💡 Have any feedback or feature suggestions? [Create a new issue](https://github.com/Mirasaki/dayz-leaderboard-nextjs/issues)
+**Current Author:** [Kyriokes](https://github.com/Kyriokes) - Author of this adapted version for the DayZ Bastardos Server.
 
-## ✨ Demo
+---
 
-A demo deployment showcasing this project can be found [here](https://leaderboard.mirasaki.dev/)
+This is a DayZ leaderboard website created with [NextJS](https://nextjs.org) using data collected and provided by the [CFTools Data API](https://app.cftools.cloud/). This adaptation has been customized specifically for the DayZ Bastardos Server community.
 
-![Preview image](/public/preview.png "Preview")
+> 😎 Have any questions about this Bastardos Server adaptation? Feel free to reach out!
 
-## 🤩 Features
+> 💡 Have any feedback or feature suggestions for the Bastardos version? [Create a new issue](https://github.com/Kyriokes/Bastardos/issues)
 
-- Shows the top 100 leaderboard for your DayZ server
+## 🎮 DayZ Bastardos Server Features
+
+- Shows the top 100 leaderboard for the DayZ Bastardos Server
 - Query by in-game name **or** Steam64/CFTools ID if you're not on the leaderboard
-- Display detailed player statistics
-- Very customizable, from theming to branding - there's a configuration value to customize it to your wants and needs
-- Manual single and multiple server configuration, or automatically resolve server grants directly from the CFTools API
-- Social media previews (and directly rich Search Engine Optimization) to preview your community
+- Display detailed player statistics for Bastardos Server players
+- Customized theming and branding for the Bastardos community
+- Optimized configuration for the Bastardos Server environment
+- Social media previews showcasing the Bastardos community
 
 ## 🚀 Deploy on Vercel
 
@@ -39,12 +41,12 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 ## 🔨 Installation
 
-1. Download and extract [the latest release](https://github.com/Mirasaki/dayz-leaderboard-nextjs/releases) and navigate to the newly created folder
+1. Download and extract [the latest release](https://github.com/Kyriokes/Bastardos/releases) and navigate to the newly created folder
 2. Rename `.env.example` to `.env` (make sure displaying file extensions is enabled) and fill in your configuration. The **only** required variables are:
     - `CFTOOLS_API_APPLICATION_ID`: Application ID from your [CFTools Developer Apps](https://developer.cftools.cloud/applications) - Authorization has to be granted by navigating to the `Grant URL` that's displayed in your app overview
     - `CFTOOLS_API_SECRET`: Same as above, click `Reveal Secret`
     - `CFTOOLS_SERVER_API_ID`: Click `Manage Server` in your [CF Cloud Panel](https://app.cftools.cloud/dashboard) > `Settings` > `API Key` > `Server ID`
-3. Rename `config.example.json` to `config.json` and customize the project to your hearts content
+3. Rename `config.example.json` to `config.json` and customize the project for the Bastardos Server
 4. Run the following commands in this exact order:
 
 ```sh
@@ -62,12 +64,12 @@ The project is now available on [port 3002](http://localhost:3002/). This is onl
 
 To allow anyone to reach your website basic knowledge of web-servers (like [Apache](https://apache.org/) or [Nginx](https://nginx.org/en/)) is required.
 
-- An example Nginx file is included for your convenience [here](/nginx.example.conf).
-- With this conf Nginx serves all static assets, if these fail to load (like no styles applied to the website) use the [minimal conf instead](/nginx.min.conf)
+- An example Nginx file is included for your convenience.
+- With this conf Nginx serves all static assets, if these fail to load (like no styles applied to the website) use the minimal conf instead
 
 ## ⚙️ Configuration
 
-SKVAD example configuration and branding will be used throughout the project.
+The configuration has been pre-customized for the DayZ Bastardos Server but can be further modified in the `config.json` file.
 
 ### .env
 
@@ -91,109 +93,45 @@ NEXT_PUBLIC_IMAGE_URL=
 NEXT_PUBLIC_LARGE_OG_IMAGE=false
 ```
 
-### config.json
+### Bastardos Server Customization
 
-> These are the default values with a bit of an explanation, but comments (lines starting with `//` are **not** valid in JSON - so don't copy-paste this into your live application. This is but a reference.)
-
-*Values marked with `(*)` use static files that are automatically served from the `/public` folder. If you change `BRANDING_LOGO_FILE_NAME` to `logo.jpeg`, that file should exist in the `/public` folder*
-
-❗**Don't use this! Use the [example configuration](/config.example.json) file instead** ❗
-
-```json
-{
-  // Branding
-  "BRANDING_NAME": "SKVAD Community",
-  "BRANDING_URL": "https://discord.gg/skvad",
-  (*) "BRANDING_LOGO_FILE_NAME": "logo.png",
-
-  // Branding Color/Theme
-  "BRANDING_THEME_COLOR": "#00FFFF",
-  "BRANDING_TEXT_BRAND_COLOR": "#0070f3",
-  "BRANDING_TEXT_LEADERBOARD_COLOR": "#FFF",
-  "BRANDING_BORDER_COLOR": "#000",
-
-  // Page Meta (Search Engine Optimization and Social Media Previews)
-  "PAGE_TITLE": "SKVAD Community",
-  "PAGE_SUB_TITLE": "DayZ",
-  "PAGE_DESCRIPTION": "DayZ Leaderboard for SKVAD Community. Browse the top players, and display your own detailed player statistics.",
-
-  // Community referral/entry button
-  "COMMUNITY_BUTTON_USE_DISCORD_LOGO": true,
-  "COMMUNITY_BUTTON_INVITE_LINK": "https://discord.gg/skvad",
-  "COMMUNITY_BUTTON_TEXT": "Join our Discord!",
-
-  // Background image
-  "USE_BACKGROUND_IMAGE": true,
-  (*) "BACKGROUND_IMAGE_FILE_NAME": "background.png",
-  "DEFAULT_BACKGROUND_COLOR": "#121212",
-  "OVERLAP_BACKGROUND_AND_NAVBAR": true,
-  "NAVBAR_BACKGROUND_COLOR": "rgba(0,0,0,.7)",
-
-  // Page Scroll Indicator
-  "USE_SCROLL_INDICATOR": true,
-  "SCROLL_INDICATOR_COLOR": "#FFF",
-  "SCROLL_INDICATOR_BACKGROUND_COLOR": "grey",
-
-  // The default value to sort by when landing on the page,
-  // value is REQUIRED in the next LEADERBOARD_ALLOWED_SORT_VALUES array
-  "LEADERBOARD_DEFAULT_SORT_VALUE": "kdratio",
-  // Allowed values to sort by in the dropdown menu
-  "LEADERBOARD_ALLOWED_SORT_VALUES": [
-    "kdratio", "kills", "deaths",
-    "longest_kill", "longest_shot", "playtime",
-    "suicides"
-  ],
-
-  // Creates a dropdown menu to select servers, if false - only the default server from the .env file is served
-  "USE_MULTIPLE_SERVER_CONFIGURATION": true,
-  // Multiple, manual, server configuration
-  // Only active when USE_MULTIPLE_SERVER_CONFIGURATION is true
-  "CFTOOLS_DAYZ_SERVERS": [
-    {
-      "NAME": "Server #1",
-      "SERVER_API_ID": "Your secret server API ID O;"
-    },
-    {
-      "NAME": "Server #2",
-      "SERVER_API_ID": "Your secret server API ID O;"
-    }
-  ],
-
-  // This prevents players in the blacklist from being queried,
-  // displaying their detailed player stats
-  "ALLOW_PLAYER_STATISTICS_FOR_BLACKLIST": false,
-  // Filters out specific id's/players from being shown on the leaderboard
-  // HAS to be CFTools id, if a steam64 is supplied,
-  // the player will only be blacklisted from detailed player stats, NOT the leaderboard page
-  // Particularly useful for admins
-  "BLACKLISTED_CFTOOLS_IDS": [
-    "ID_1",
-    "ID_2"
-  ]
-}
-```
+This version includes specific customizations for the DayZ Bastardos Server:
+- Custom branding and theming
+- Server-specific configuration
+- Optimized player statistics display
+- Community-focused features
 
 ## Common Issues
 
 ### ERR_ABORTED
 If you're getting `net::ERR_ABORTED 404` errors, that means you have created a new production build (`npm run build`) but the process listening on your port is still trying to serve previous build files - fix this by restarting your process.
 
-## Author
+## Authors
 
-👤 **Richard Hillebrand (Mirasaki)**
+👤 **Kyriokes** - *Author of Bastardos Server Adaptation*
+- Github: [@Kyriokes](https://github.com/Kyriokes)
 
+👤 **Richard Hillebrand (Mirasaki)** - *Original Project Creator*
 - Website: [https://mirasaki.dev/](https://mirasaki.dev/)
 - Github: [@Mirasaki](https://github.com/Mirasaki)
 
 ## 🤝 Contributing
 
-Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/Mirasaki/dayz-leaderboard-nextjs/issues).
+Contributions, issues and feature requests are welcome for the Bastardos Server adaptation!<br />Feel free to check [issues page](https://github.com/Kyriokes/Bastardos/issues).
 
 ## Show your support
 
-Give a ⭐️ if this project helped you!
+Give a ⭐️ if this Bastardos Server adaptation helped you!
 
 ## 📝 License
 
-Copyright © 2023 [Richard Hillebrand (Mirasaki)](https://github.com/Mirasaki).<br />
-This project is [MIT](https://mit-license.org/) licensed.
+**Original Copyright:** Copyright © 2023 [Richard Hillebrand (Mirasaki)](https://github.com/Mirasaki).<br />
+**Adaptation Copyright:** Copyright © 2024 [Kyriokes](https://github.com/Kyriokes).<br />
+
+This project maintains the original [MIT](https://mit-license.org/) license.
+
+---
+
+*This project is an adaptation of the original dayz-leaderboard-next by Mirasaki, customized specifically for the DayZ Bastardos Server community.*
+```
+
